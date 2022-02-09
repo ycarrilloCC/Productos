@@ -23,7 +23,7 @@ class ShoppingController extends Controller
     public function loadshopping()
     {
         $shopping = Bill::where('id_user', Auth::user()->id)->where('status', 0)->get()->toArray();
-        return $shopping[0]['shopping'];
+        return count($shopping) == 0 ? []:$shopping[0]['shopping'];
     }
     public function store(Request $request)
     {
